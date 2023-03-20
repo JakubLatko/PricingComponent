@@ -1,0 +1,279 @@
+@use "_reset.scss";
+
+$gradient:150deg,  hsl(236, 72%, 79%) 0%,  hsl(237, 63%, 64%) 100%;
+
+$primary-900:white;
+$primary-800:hsl(240, 78%, 98%);
+$primary-700:hsl(234, 14%, 74%);
+$primary-400:hsl(233, 13%, 49%);
+$primary-300:hsl(232, 13%, 33%);
+
+body{
+    font-size: 16px;
+    display: grid;
+    place-items: center;
+    width: 100vw;
+    font-family: 'Montserrat', sans-serif;
+    background: $primary-800;
+    background-image:url(images/bg-top.svg);
+    background-repeat: no-repeat ;
+    background-position: top right;
+    
+}
+
+main{
+    width: 100vw;
+    min-height: 100vh;
+    background-image: url(images/bg-bottom.svg);
+    background-repeat: no-repeat ;
+    background-position: bottom left;
+    display: flex;
+    flex-direction: column;
+}
+
+.topHeader{
+    display: flex;
+    flex-direction: column;
+    margin-inline: auto;
+    text-align: center;
+    padding-block: 3rem;
+}
+h1{
+    color: $primary-400;
+}
+.switchInput{
+    position: relative;
+    display: inline-block;
+    width: 4rem;
+    height: 2rem;
+    margin-inline: 1rem;
+    input{
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    aspect-ratio: 1/1;
+    width: 1.5rem;
+    left: 0.5rem;
+    top: 0.25rem;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+  }
+.slider{
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 100vw;
+}
+input:checked + .slider {
+    background-color: hsl(236, 72%, 79%);
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px hsl(236, 72%, 79%);
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(1.5rem);
+    -ms-transform: translateX(1.5rem);
+    transform: translateX(1.5rem);
+  }
+.switchWrapper{
+    display: flex;
+    flex-direction:row ;
+    margin-inline: auto;
+    margin-block: 1rem;
+    h2{
+        font-size: clamp(0.75rem, 6vw, 1.25rem);
+        margin-inline: 1rem;
+        color: $primary-700;
+    
+    }
+}
+
+
+.optionsWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly;
+    margin-block: auto;
+    margin-inline: 5vw;
+    gap: 2rem;
+    
+}
+
+.pricingOption{
+    background-color: $primary-900;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 10px;
+    h3{
+        color: $primary-300;
+        font-size: clamp(1rem, 6vw, 2rem);
+    }
+    h2{
+        color: $primary-300;
+        font-size: clamp(1rem, 14vw, 6rem);
+        margin-block: 1rem;
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+        margin-inline: auto;
+    }
+    p{
+        color: $primary-300;
+        border-top: 1px solid rgba($primary-300, 0.3);
+        padding: 0.5rem;
+    }
+    p:first-of-type{
+        margin-top: 1rem;;
+    }
+    p:last-of-type{
+        border-bottom: 1px solid rgba($primary-300, 0.3);
+        margin-bottom:1rem;
+    }
+    button{
+        background-image: linear-gradient($gradient);
+        border: 0;
+        border-radius: 5px;
+        margin-block: 1rem;
+        
+        &:hover,
+        &:focus-within{
+            background-color: $primary-900;
+            cursor: pointer;
+            background-image: none;
+            outline: 1px solid hsl(237, 63%, 64%);
+            transform:matrix()(100px);
+            a{
+                color: hsl(237, 63%, 64%);
+            }
+        }
+        a{
+            color: $primary-900;
+            text-decoration: none;
+            width: 100%;
+            display: block;
+            padding: 0.5em 2em;
+        }
+    }
+
+}
+.dollar{
+    font-size: clamp(0.75rem, 8vw, 2rem);
+    margin-block: auto;
+    margin-top: auto;
+}
+
+
+.pricingOption:nth-of-type(2){
+    background-image: linear-gradient($gradient);
+    color: $primary-900;
+    h3{
+        color: $primary-900;
+    }
+    h2{
+        color: $primary-900;
+    }
+    p{
+        color: $primary-900;
+        border-top: 1px solid rgba($primary-900, 0.3);
+    }
+    p:last-of-type{
+        border-bottom: 1px solid rgba($primary-900, 0.3);
+    }
+    button{
+        background-color: $primary-900 ;
+        background-image: none;
+        &:hover,
+        &:focus-within{
+            background-color: transparent;
+            cursor: pointer;
+            background-image: none;
+            outline: 1px solid $primary-900;
+            transform:matrix()(100px);
+            a{
+                color:$primary-900;
+            }
+        }
+        a{
+            color: hsl(237, 63%, 64%);
+            width: 100%;
+        }
+    }
+}
+@media only screen and (min-width:500px)and (max-width:600px){
+    .optionsWrapper{
+        margin-inline: auto;
+    }
+    .pricingOption{
+       width: 70vw; 
+       min-width: 400px;
+        max-width: 500px;
+    }
+}
+
+@media only screen and (min-width:600px) and (max-width:1024px){
+    
+    .optionsWrapper{
+        margin-inline: auto;
+        padding-bottom: 5rem;
+    }
+    .pricingOption{
+        max-width: 700px;
+        min-width: 400px;
+        width: 40vw;
+    }
+}
+
+
+@media only screen and (min-width:1024px){
+    .topHeader{
+        margin-inline: auto;
+    }
+    .optionsWrapper{
+        flex-direction: row;
+        gap: 0;
+        justify-content: unset;
+        margin-inline: auto;
+        align-items: center;
+    }
+    .pricingOption{
+        padding: 2rem;
+        width: fit-content;
+        height: fit-content;
+        box-shadow: 0px 10px 10px rgba(hsl(237, 63%, 64%), 0.4);
+        h3{
+            font-size: clamp(0.75rem, 1.5vw, 1.5rem);
+        }
+        h2{
+            font-size: clamp(3rem, 4vw, 5rem);
+        }
+        p{
+            font-size: clamp(0.75rem, 1vw, 1.5rem);
+            padding-inline: 5rem;
+            padding-block: 1rem;
+        }
+        button{
+            a{
+                padding: 0.75em 2em;
+            }
+        }
+    }
+    .pricingOption:nth-of-type(2){
+        margin-block: auto;
+        padding: 3rem;
+       
+    }
+}
